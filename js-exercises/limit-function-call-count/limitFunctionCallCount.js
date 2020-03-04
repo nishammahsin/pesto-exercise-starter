@@ -1,7 +1,13 @@
-const limitFunctionCallCount = (callback, functionCallLimit) => (...rest) => {
-  for (let index = 0; index < functionCallLimit; index++) {
-    return callback(...rest);
-  }
+const limitFunctionCallCount = (callback, functionCallLimit) => {
+  let callbackCalledCount = 0;
+  const callbackCallLim = (...rest) => {
+    if (callbackCalledCount < functionCallLimit) {
+      callbackCalledCount++;
+      return callback(...rest);
+    }
+    return null;
+  };
+  return callbackCallLim;
 };
 
 export { limitFunctionCallCount };
