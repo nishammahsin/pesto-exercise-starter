@@ -24,25 +24,25 @@ describe("arrayCubeRootToJson", () => {
 
   it("throw cases", () => {
     expect(() => {
-      new arrayCubeRootToJson({});
+      arrayCubeRootToJson({});
     }).toThrow();
     expect(() => {
-      new arrayCubeRootToJson(true);
+      arrayCubeRootToJson(true);
     }).toThrow();
     expect(() => {
-      new arrayCubeRootToJson([null, false]);
+      arrayCubeRootToJson([null, false]);
     }).toThrow();
     expect(() => {
-      new arrayCubeRootToJson(false);
+      arrayCubeRootToJson(false);
     }).toThrow();
     expect(() => {
-      new arrayCubeRootToJson(undefined);
+      arrayCubeRootToJson(undefined);
     }).toThrow();
     expect(() => {
-      new arrayCubeRootToJson([1, 2, 4, "abc"]);
+      arrayCubeRootToJson([1, 2, 4, "abc"]);
     }).toThrow();
     expect(() => {
-      new arrayCubeRootToJson([1, 2.12, 4.44, "abc"]);
+      arrayCubeRootToJson([1, 2.12, 4.44, "abc"]);
     }).toThrow();
   });
 });
