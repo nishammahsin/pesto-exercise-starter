@@ -25,12 +25,15 @@ export default class GroceryList extends Component {
         <List
           list={this.state.list}
           customRendering={item => (
-            <div
-              onClick={() => this.togglePurchase(item)}
-              className={item.done ? "red" : ""}
-            >
-              <span>{item.name} </span>
-              <span> {item.count} </span>
+            <div>
+              <div
+                onClick={() => this.togglePurchase(item)}
+                className={item.done ? "red" : ""}
+              >
+                <span>{item.name} </span>
+                <span> {item.count} </span>
+              </div>
+              <span onClick={() => this.clearItem(item)}> X </span>
             </div>
           )}
         ></List>
@@ -59,16 +62,6 @@ export default class GroceryList extends Component {
     }
   };
 
-  checkIfExist = (obj, list) => {
-    for (let i = 0; i < list.length; i++) {
-      if (list[i].name === obj.name) {
-        return i;
-      }
-    }
-
-    return -1;
-  };
-
   togglePurchase = item => {
     const itemIndex = this.checkIfExist(item, this.state.list);
     if (itemIndex !== -1) {
@@ -78,5 +71,26 @@ export default class GroceryList extends Component {
 
       this.setState({ list: this.state.list });
     }
+  };
+
+  clearItem = item => {
+    const itemIndex = this.checkIfExist(item, this.state.list);
+    console.log(item, itemIndex);
+    if (itemIndex !== -1) {
+      const newList = this.state.list;
+      newList.splice(itemIndex, 1);
+      console.log(newList);
+      this.setState({ list: newList });
+    }
+  };
+
+  checkIfExist = (obj, list) => {
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].name === obj.name) {
+        return i;
+      }
+    }
+
+    return -1;
   };
 }
