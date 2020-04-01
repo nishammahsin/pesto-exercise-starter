@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { List } from "../components/List";
+import { List } from "../../components/List";
+import "./styles.css";
 export default class GroceryList extends Component {
   constructor(props) {
     super(props);
@@ -26,14 +27,17 @@ export default class GroceryList extends Component {
           list={this.state.list}
           customRendering={item => (
             <div>
-              <div
-                onClick={() => this.togglePurchase(item)}
-                className={item.done ? "red" : ""}
-              >
-                <span>{item.name} </span>
-                <span> {item.count} </span>
+              <div onClick={() => this.togglePurchase(item)} className={"item"}>
+                <span className={`${item.done ? "done" : ""}`}>
+                  {item.name}{" "}
+                </span>
+                <span> ({item.count}) </span>
+
+                <span className={"clear"} onClick={() => this.clearItem(item)}>
+                  {" "}
+                  Clear{" "}
+                </span>
               </div>
-              <span onClick={() => this.clearItem(item)}> X </span>
             </div>
           )}
         ></List>

@@ -1,5 +1,5 @@
 import React from "react";
-import Grocery from "./containers/GroceryList";
+import Grocery from "./containers/GroceryList/index";
 import "./App.css";
 
 function App() {
